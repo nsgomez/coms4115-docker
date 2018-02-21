@@ -6,7 +6,7 @@ Specifically, this image is tuned for use with CircleCI continuous integration
 and a language based on MicroC.
 
 This image is available on Docker Cloud at
-[https://cloud.docker.com/swarm/nsgomez/coms4115-docker](nsgomez/coms4115-docker).
+[nsgomez/coms4115-docker](https://cloud.docker.com/swarm/nsgomez/coms4115-docker).
 
 ## Usage
 
