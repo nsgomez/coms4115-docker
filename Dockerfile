@@ -9,6 +9,7 @@ RUN apt-get -y upgrade
 # Install dependencies for MicroC
 RUN apt-get -y install ocaml m4 cmake pkg-config git opam
 RUN apt-get -t stretch-backports -y install llvm-5.0-dev
+RUN apt-get -y install llvm-5.0 llvm-5.0-runtime
 
 # Use a separate user for OPAM. OPAM complains if it's run as root,
 # and probably for good reason.
@@ -16,15 +17,10 @@ RUN useradd -m opam -s /bin/bash
 USER opam
 
 # Initialize OPAM
-RUN echo 'eval `opam config env`' >> $HOME/.bashrc
-RUN echo '. /home/opam/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true' >> $HOME/.bashrc
 RUN opam init
+RUN eval `opam config env`
+RUN echo '. ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true' >> $HOME/.bashrc
 COPY .ocamlinit $HOME/.ocamlinit
 
 # Set up basic compiler build dependencies
-RUN opam install llvm
-
-# Finalize base environment
-WORKDIR /lang
-
-# Set up additional OPAM/APT dependencies below this line
+RUN opam install llvm.5.0.0
