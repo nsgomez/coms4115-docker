@@ -24,4 +24,7 @@ COPY .ocamlinit $HOME/.ocamlinit
 
 # Set up basic compiler build dependencies
 RUN opam install llvm.5.0.0
+
+# Set up test coverage
 RUN opam install bisect_ppx ocveralls
+RUN apt-get -y install curl
