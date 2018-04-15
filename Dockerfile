@@ -24,3 +24,4 @@ COPY .ocamlinit $HOME/.ocamlinit
 
 # Set up basic compiler build dependencies
 RUN opam install llvm.5.0.0
+RUN opam install bisect_ppx ocveralls
