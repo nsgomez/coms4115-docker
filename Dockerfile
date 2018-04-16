@@ -27,4 +27,6 @@ RUN opam install llvm.5.0.0
 
 # Set up test coverage
 RUN opam install bisect_ppx ocveralls
+USER root
 RUN apt-get -y install curl
+USER opam
